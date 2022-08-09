@@ -14,7 +14,7 @@ Route::get('hello/:name', 'index/hello');
 Route::get('/', 'home/index');
 Route::get('feed.xml', 'home/feed');
 Route::get('feed', 'home/feed');
-Route::get('blog/:category/:blogId', 'home/blog');
+Route::get('blog/:blogId', 'home/blog');
 Route::get('page/:pageNo', 'home/page');
 Route::get('category/:categoryId/page/:pageNo', 'home/category');
 Route::get('category/:categoryId', 'home/category');

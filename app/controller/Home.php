@@ -479,14 +479,14 @@ class Home extends BaseController
      * @param string $category
      * @return string
      */
-    public function blog($blogId = null, string $category = "default"): string
+    public function blog($blogId = null): string
     {
         if ($this->loadOutCache()) {
             return $this->response->getContent();
         }
 
-        $sitePath = "blog/" . $category . "/" . $blogId;
-        $blogIdMd5 = md5($sitePath);
+        $fileNameWithoutSuffix = $blogId;
+        $blogIdMd5 = md5($fileNameWithoutSuffix);
         $blog = $this->markdown->getBlogById($blogIdMd5);
         if ($blog == null) {
             return $this->go404();
@@ -525,8 +525,7 @@ class Home extends BaseController
     {
         $this->response->code(404);
 
-        //return $this->render("404");
-        return "404";
+        return $this->render("404",404);
     }
 
     //设置渲染数据
